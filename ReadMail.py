@@ -1,8 +1,8 @@
-def read_mail(user, app_pwd, server, port, readonly = True):
+def read_mail(user, app_pwd, imap_server, imap_port, readonly = True):
     import imaplib
     import email
     
-    mail = imaplib.IMAP4_SSL(server, port)
+    mail = imaplib.IMAP4_SSL(imap_server, imap_port)
     mail.login(user, app_pwd)
     mail.select("inbox", readonly = readonly)
     # ALL - all emails, UNSEEN - all new emails
@@ -38,6 +38,6 @@ def read_mail(user, app_pwd, server, port, readonly = True):
 
 emails = read_mail(user = "",
                   app_pwd = "",
-                  server = "",
-                  port = 999,
+                  imap_server = "",
+                  imap_port = 999,
                   readonly = True)
