@@ -1,10 +1,10 @@
-def read_mail(user, app_pwd, imap_server, imap_port, readonly = True):
+def read_mail(user, app_pwd, imap_server, imap_port, read_only = True):
     import imaplib
     import email
     
     mail = imaplib.IMAP4_SSL(imap_server, imap_port)
     mail.login(user, app_pwd)
-    mail.select("inbox", readonly = readonly)
+    mail.select("inbox", readonly = read_only)
     # ALL - all emails, UNSEEN - all new emails
     (check, message_ids) = mail.search(None, "UNSEEN")
     
@@ -36,8 +36,8 @@ def read_mail(user, app_pwd, imap_server, imap_port, readonly = True):
     mail.logout()
     return final
 
-emails = read_mail(user = "",
-                  app_pwd = "",
-                  imap_server = "",
-                  imap_port = 999,
-                  readonly = True)
+emails = read_mail(user = "test@gmail.com",
+                   app_pwd = "",
+                   imap_server = "imap.gmail.com",
+                   imap_port = 993,
+                   read_only = True)
